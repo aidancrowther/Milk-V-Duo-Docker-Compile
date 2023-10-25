@@ -39,7 +39,7 @@ command:
 ```bash
 docker run -it \
     -v $(pwd):/home/milkv/buildroot \
-    ghcr.io/aidancrowther/milkvduocompile:latest \
+    ghcr.io/aidancrowther/milk-v-duo-docker-compile:latest \
     "cd examples/hello-world && make"
 ```
 
@@ -58,7 +58,7 @@ Docker container, use the following command:
 ```bash
 docker run -it \
     -v $(pwd):/home/milkv/buildroot \
-    ghcr.io/aidancrowther/milkvduocompile:latest \
+    ghcr.io/aidancrowther/milk-v-duo-docker-compile:latest \
     /bin/bash
 ```
 
@@ -91,10 +91,10 @@ Building the Docker image yourself can be beneficial for several reasons:
 To build the Docker image, use the following command:
 
 ```bash
-docker build -t ghcr.io/aidancrowther/milkvduocompile .
+docker build -t ghcr.io/aidancrowther/milk-v-duo-docker-compile .
 ```
 
-In this command, `ghcr.io/aidancrowther/milkvduocompile` is the tag for the
+In this command, `ghcr.io/aidancrowther/milk-v-duo-docker-compile` is the tag for the
 Docker image. The tag is a label for your image so that it can be referenced.
 This tag is used in subsequent commands (like `docker run`). By using this tag,
 you don't need to change any of the other commands in this README.
