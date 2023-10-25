@@ -2,6 +2,10 @@
 
 A Docker container with the Milk V Duo toolchain.
 
+![](https://milkv.io/assets/images/duo-v1.2-9bf1d36ef7632ffba032796978cda903.png)
+
+*Don't let your Milk go spoiled!*
+
 ## About Milk V Duo
 
 The Milk V Duo is an ultra-compact embedded development platform based on the
@@ -65,7 +69,31 @@ make
 This method is useful when you need to run multiple commands or want to explore
 the file system within the Docker container.
 
+## Building the Docker Image
 
+Building the Docker image yourself can be beneficial for several reasons:
+
+1. **Customization**: You might want to add additional tools or modify the
+   existing setup to suit your specific needs. Building the image yourself
+   allows you to make these customizations.
+
+2. **Learning**: If you're new to Docker, going through the process of building
+   an image can be a great learning experience.
+
+3. **Security**: Although it's generally safe to use images from trusted
+   sources, building the image yourself ensures that you know exactly what's in
+   your image.
+
+To build the Docker image, use the following command:
+
+```bash
+docker build -t ghcr.io/angelonfira/milkcompile .
+```
+
+In this command, `ghcr.io/angelonfira/milkcompile` is the tag for the Docker
+image. The tag is a label for your image so that it can be referenced. This tag
+is used in subsequent commands (like `docker run`). By using this tag, you don't
+need to change any of the other commands in this README.
 
 ## FAQ
 
