@@ -40,14 +40,14 @@ command:
 docker run -it \
     -v $(pwd):/home/milkv/buildroot \
     ghcr.io/angelonfira/milkvduocompile:latest \
-    "echo $SHELL && source /home/milkv/duo-examples/envsetup.sh && env && make -f examples/hello-world/Makefile"
+    "cd examples/hello-world && make"
 ```
 
-This command mounts your local `buildroot` directory to the `/buildroot`
+This command mounts your current directory to the `/home/milkv/buildroot`
 directory in the Docker container and runs the `make` command in the
 `hello-world` directory. This method is useful for automation and scripting
 because it allows you to run commands without manually starting a Docker
-container.
+container. Note, the `"` are needed for your command.
 
 ### Running Commands Within the Container
 
@@ -66,7 +66,7 @@ This command starts a Docker container and opens a bash shell. From here, you
 can navigate to the `hello-world` directory and run the `make` command:
 
 ```bash
-cd /buildroot/examples/hello-world
+cd examples/hello-world
 make
 ```
 
@@ -124,15 +124,3 @@ If you need to download executables or any other files from Codespaces:
 2. Select `Download`.
 
 The selected file will be downloaded to your local machine.
-
-## FAQ
-
-**Q: What is Milk-V Duo?** A: The Milk-V Duo is an ultra-compact embedded
-development platform based on the Sophgo CV1800B chip.
-
-**Q: Why do I need this Docker image?** A: This Docker image provides a
-ready-to-use environment for compiling code for the Milk-V Duo, eliminating the
-need to manually install and configure necessary tools on your local machine.
-
-**Q: How do I build and run this Docker image?** A: Instructions for building
-and running this Docker image are provided above in this README.
