@@ -1,1 +1,1 @@
- docker run -it -v ./buildroot:/buildroot milkcompile /bin/bash
+docker run -it -v ./buildroot:/buildroot milkcompile /bin/bash
