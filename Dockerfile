@@ -22,10 +22,10 @@ WORKDIR /home/milkv
 # Clone the repository and source the setup script
 RUN git clone https://github.com/milkv-duo/duo-examples.git \
     && cd duo-examples \
-    && source envsetup.sh
+    && . envsetup.sh
 
 # Update .bashrc
-RUN echo "source ~/duo-examples/envsetup.sh" >> ~/.bashrc \
+RUN echo ". ~/duo-examples/envsetup.sh" >> ~/.bashrc \
     && echo "cd ~/duo-examples" >> ~/.bashrc
 
 # Create a volume for buildroot
