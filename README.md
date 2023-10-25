@@ -2,7 +2,7 @@
 
 A Docker container with the Milk V Duo toolchain.
 
-![](https://milkv.io/assets/images/duo-v1.2-9bf1d36ef7632ffba032796978cda903.png)
+<img src="https://milkv.io/assets/images/duo-v1.2-9bf1d36ef7632ffba032796978cda903.png" width="200">
 
 *Don't let your Milk go spoiled!*
 
