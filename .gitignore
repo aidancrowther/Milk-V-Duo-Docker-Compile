@@ -1,4 +1,4 @@
 buildroot/
 *.o
-webserver
-helloworld
+/examples/hello-world/helloworld
+/examples/webserver/webserver
