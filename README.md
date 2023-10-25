@@ -1,6 +1,6 @@
-# MilkVDuoCompile
+# Milk-V Duo Compile
 
-A Docker container with the Milk V Duo toolchain.
+A Docker container with the Milk-V Duo toolchain.
 
 <p align="center">
   <img src="https://milkv.io/assets/images/duo-v1.2-9bf1d36ef7632ffba032796978cda903.png" width="300">
@@ -8,9 +8,11 @@ A Docker container with the Milk V Duo toolchain.
   <i>Don't let your Milk go spoiled!</i>
 </p>
 
-## About Milk V Duo
+## About Milk-V Duo
 
-The Milk V Duo is an ultra-compact embedded development platform based on the
+*From [the Milk-V website](https://milkv.io/duo)*
+
+The Milk-V Duo is an ultra-compact embedded development platform based on the
 Sophgo CV1800B chip. It can run Linux and RTOS, providing a reliable, low-cost,
 and high-performance platform for professionals, industrial ODMs, AIoT
 enthusiasts, DIY hobbyists, and creators.
@@ -18,7 +20,7 @@ enthusiasts, DIY hobbyists, and creators.
 ## Why this Docker Image?
 
 This Docker image is designed to provide a ready-to-use environment for
-compiling code for the Milk V Duo. It eliminates the need to manually install
+compiling code for the Milk-V Duo. It eliminates the need to manually install
 and configure the necessary tools on your local machine.
 
 ## Running the Docker Image
@@ -36,9 +38,9 @@ command:
 
 ```bash
 docker run -it \
-    -v $(pwd)/buildroot:/buildroot \
+    -v $(pwd):/home/milkv/buildroot \
     ghcr.io/angelonfira/milkvduocompile:latest \
-    make -C /buildroot/examples/hello-world
+    "echo $SHELL && source /home/milkv/duo-examples/envsetup.sh && env && make -f examples/hello-world/Makefile"
 ```
 
 This command mounts your local `buildroot` directory to the `/buildroot`
@@ -55,7 +57,7 @@ Docker container, use the following command:
 
 ```bash
 docker run -it \
-    -v $(pwd)/buildroot:/buildroot \
+    -v $(pwd):/home/milkv/buildroot \
     ghcr.io/angelonfira/milkvduocompile:latest \
     /bin/bash
 ```
@@ -89,21 +91,47 @@ Building the Docker image yourself can be beneficial for several reasons:
 To build the Docker image, use the following command:
 
 ```bash
-docker build -t ghcr.io/angelonfira/milkcompile .
+docker build -t ghcr.io/angelonfira/milkvduocompile .
 ```
 
-In this command, `ghcr.io/angelonfira/milkcompile` is the tag for the Docker
+In this command, `ghcr.io/angelonfira/milkvduocompile` is the tag for the Docker
 image. The tag is a label for your image so that it can be referenced. This tag
 is used in subsequent commands (like `docker run`). By using this tag, you don't
 need to change any of the other commands in this README.
 
+## Using GitHub Codespaces
+
+If you don't have Docker installed on your machine, you can use GitHub Codespaces. Codespaces sets up a cloud-hosted, containerized, and customizable VS Code environment. This repository is already configured for use with Codespaces.
+
+### Setting Up Codespaces
+
+1. Navigate to the main page of the repository.
+2. Click the green `Code` button.
+3. In the dropdown, select `Open with Codespaces`.
+4. Select `+ New codespace`.
+
+After a short while, your codespace will be ready and you'll be in a fully featured VS Code workspace.
+
+### Building and Running in Codespaces
+
+You can build and run your code directly in the terminal in Codespaces, just like you would on your local machine.
+
+### Downloading Executables from Codespaces
+
+If you need to download executables or any other files from Codespaces:
+
+1. In the VS Code workspace, right-click the file you want to download.
+2. Select `Download`.
+
+The selected file will be downloaded to your local machine.
+
 ## FAQ
 
-**Q: What is Milk V Duo?** A: The Milk V Duo is an ultra-compact embedded
+**Q: What is Milk-V Duo?** A: The Milk-V Duo is an ultra-compact embedded
 development platform based on the Sophgo CV1800B chip.
 
 **Q: Why do I need this Docker image?** A: This Docker image provides a
-ready-to-use environment for compiling code for the Milk V Duo, eliminating the
+ready-to-use environment for compiling code for the Milk-V Duo, eliminating the
 need to manually install and configure necessary tools on your local machine.
 
 **Q: How do I build and run this Docker image?** A: Instructions for building
