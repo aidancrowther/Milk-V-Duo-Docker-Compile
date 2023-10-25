@@ -39,7 +39,7 @@ command:
 ```bash
 docker run -it \
     -v $(pwd):/home/milkv/buildroot \
-    ghcr.io/angelonfira/milkvduocompile:latest \
+    ghcr.io/aidancrowther/milkvduocompile:latest \
     "cd examples/hello-world && make"
 ```
 
@@ -58,7 +58,7 @@ Docker container, use the following command:
 ```bash
 docker run -it \
     -v $(pwd):/home/milkv/buildroot \
-    ghcr.io/angelonfira/milkvduocompile:latest \
+    ghcr.io/aidancrowther/milkvduocompile:latest \
     /bin/bash
 ```
 
@@ -91,17 +91,20 @@ Building the Docker image yourself can be beneficial for several reasons:
 To build the Docker image, use the following command:
 
 ```bash
-docker build -t ghcr.io/angelonfira/milkvduocompile .
+docker build -t ghcr.io/aidancrowther/milkvduocompile .
 ```
 
-In this command, `ghcr.io/angelonfira/milkvduocompile` is the tag for the Docker
-image. The tag is a label for your image so that it can be referenced. This tag
-is used in subsequent commands (like `docker run`). By using this tag, you don't
-need to change any of the other commands in this README.
+In this command, `ghcr.io/aidancrowther/milkvduocompile` is the tag for the
+Docker image. The tag is a label for your image so that it can be referenced.
+This tag is used in subsequent commands (like `docker run`). By using this tag,
+you don't need to change any of the other commands in this README.
 
 ## Using GitHub Codespaces
 
-If you don't have Docker installed on your machine, you can use GitHub Codespaces. Codespaces sets up a cloud-hosted, containerized, and customizable VS Code environment. This repository is already configured for use with Codespaces.
+If you don't have Docker installed on your machine, you can use GitHub
+Codespaces. Codespaces sets up a cloud-hosted, containerized, and customizable
+VS Code environment. This repository is already configured for use with
+Codespaces.
 
 ### Setting Up Codespaces
 
@@ -110,11 +113,13 @@ If you don't have Docker installed on your machine, you can use GitHub Codespace
 3. In the dropdown, select `Open with Codespaces`.
 4. Select `+ New codespace`.
 
-After a short while, your codespace will be ready and you'll be in a fully featured VS Code workspace.
+After a short while, your codespace will be ready and you'll be in a fully
+featured VS Code workspace.
 
 ### Building and Running in Codespaces
 
-You can build and run your code directly in the terminal in Codespaces, just like you would on your local machine.
+You can build and run your code directly in the terminal in Codespaces, just
+like you would on your local machine.
 
 ### Downloading Executables from Codespaces
 
