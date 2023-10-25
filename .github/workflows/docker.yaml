@@ -24,11 +24,13 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Convert repository name to lowercase
-        run: echo "REPO_NAME=$(echo ${{ github.repository }} | awk '{print tolower($0)}')" >> $GITHUB_ENV
+        run: |
+          echo "OWNER_NAME=$(echo ${{ github.repository_owner }} | awk '{print tolower($0)}')" >> $GITHUB_ENV
+          echo "REPO_NAME=$(echo ${{ github.repository }} | awk '{print tolower($0)}')" >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ env.REPO_NAME }}/milk-v-duo:latest
+          tags: ghcr.io/${{ env.OWNER_NAME }}/${{ env.REPO_NAME }}/milk-v-duo:latest
