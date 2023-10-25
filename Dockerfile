@@ -1,22 +1,41 @@
+# Use ubuntu for the base image
 FROM ubuntu:22.04
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    bash \
+    git \
+    make \
+    g++ \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create a non-root user
+RUN useradd -m milkv && echo "milkv:milkv" | chpasswd && adduser milkv sudo
+
+# Switch to the new user
+USER milkv
 
 SHELL ["/bin/bash", "-c"]
 
-RUN apt update -y && apt upgrade -y
+# Set the working directory
+WORKDIR /home/milkv
 
-RUN apt-get install -y\
-                     wget \
-                     git \
-                     make \
-                     build-essential
+# Clone the repository and source the setup script
+RUN git clone https://github.com/milkv-duo/duo-examples.git \
+    && cd duo-examples \
+    && ./envsetup.sh
 
-RUN cd /root && \
-    git clone https://github.com/milkv-duo/duo-examples.git && \
-    cd duo-examples && \
-    source envsetup.sh
+# Update .bashrc
+RUN echo ". ~/duo-examples/envsetup.sh" >> ~/.bashrc \
+    && echo "cd /home/milkv/buildroot" >> ~/.bashrc
 
-RUN echo "source /root/duo-examples/envsetup.sh" >> ~/.bashrc
+# Set the working directory for the user
+WORKDIR /home/milkv/buildroot
 
-RUN echo "cd /root/duo-examples" >> ~/.bashrc
+# Add entrypoint script
+COPY entrypoint.sh /entrypoint.sh
 
-RUN mkdir /buildroot
+# This entrypoint is just for Docker run commands that pass a command in, rather
+# than creating an interactive terminal.
+ENTRYPOINT ["/entrypoint.sh"]
