@@ -1,27 +1,32 @@
-FROM ubuntu:22.04
+# Use debian for the base image
+FROM debian:buster-slim
 
-SHELL ["/bin/bash", "-c"]
-
-RUN apt update \
-    && apt upgrade -y \
-    && apt-get install -y \
-    wget \
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    bash \
     git \
     make \
-    build-essential
+    g++ \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 
+# Create a non-root user
 RUN useradd -m milkv && echo "milkv:milkv" | chpasswd && adduser milkv sudo
 
+# Switch to the new user
 USER milkv
 
+# Set the working directory
 WORKDIR /home/milkv
 
+# Clone the repository and source the setup script
 RUN git clone https://github.com/milkv-duo/duo-examples.git \
     && cd duo-examples \
     && source envsetup.sh
 
-RUN echo "source ~/duo-examples/envsetup.sh" >> ~/.bashrc
+# Update .bashrc
+RUN echo "source ~/duo-examples/envsetup.sh" >> ~/.bashrc \
+    && echo "cd ~/duo-examples" >> ~/.bashrc
 
-RUN echo "cd ~/duo-examples" >> ~/.bashrc
-
+# Create a volume for buildroot
 VOLUME /buildroot
