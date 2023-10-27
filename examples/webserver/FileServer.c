@@ -163,7 +163,7 @@ void FS_SendFile(struct WebServer *Web,uintptr_t FileID)
 const char HelloWorldHTML[]=
 "<html>"
     "<body>"
-        "<center><h1><u>Hello World From Milk V Duo!</h1></center>"
+        "<center><h1><u>Hello World From Milk-V Duo!</h1></center>"
         "<p align='center'>"
         "<img src='https://milkv.io/assets/images/duo-v1.2-9bf1d36ef7632ffba032796978cda903.png' width='300'>"
         "<br>"

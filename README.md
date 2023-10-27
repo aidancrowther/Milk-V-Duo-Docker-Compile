@@ -73,14 +73,14 @@ make
 This method is useful when you need to run multiple commands or want to explore
 the file system within the Docker container.
 
-## Copying Binaries to the Nilk V Duo
+## Copying Binaries to the Milk-V Duo
 
-The Milk V Duo runs on Busybox Linux, which has many simpler and/or older 
-implementations of common services. As such, you may encounter an error when following
-the tutorial from Milk to copy files to the board. If you observe an error regarding 
-/usr/libexec/sftp-server being missing, this means you are using a new version of 
-SCP that usses sftp on its backend. To resolve this issue, simply add the -O flag to
-your command and it should resolve it.
+The Milk-V Duo runs on Busybox Linux, which has many simpler and/or older
+implementations of common services. As such, you may encounter an error when
+following the tutorial from Milk to copy files to the board. If you observe an
+error regarding `/usr/libexec/sftp-server` being missing, this means you are
+using a new version of SCP that usses sftp on its backend. To resolve this
+issue, simply add the -O flag to your command and it should resolve it.
 
 ## Building the Docker Image
 
