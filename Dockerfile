@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     make \
     g++ \
     wget \
+    sudo \
     && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user

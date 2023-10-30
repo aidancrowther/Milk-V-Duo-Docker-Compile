@@ -73,6 +73,22 @@ make
 This method is useful when you need to run multiple commands or want to explore
 the file system within the Docker container.
 
+#### Sudo Access
+
+The Docker image has sudo installed, and the default user (`milkv`) has sudo
+access. The reason that this container isn't using the `root` user by default is
+that anything produced by the container into the current directory will be owned
+by `root` and not the user that ran the container. This would include the final
+binary, and any intermediate files.
+
+You might need to use sudo to install additional packages or run certain tools
+within the container. To use sudo, run the following command:
+
+```bash
+# Use the password "milkv"
+sudo <command>
+```
+
 ## Copying Binaries to the Milk-V Duo
 
 The Milk-V Duo runs on Busybox Linux, which has many simpler and/or older
@@ -103,10 +119,11 @@ To build the Docker image, use the following command:
 docker build -t ghcr.io/aidancrowther/milk-v-duo-docker-compile .
 ```
 
-In this command, `ghcr.io/aidancrowther/milk-v-duo-docker-compile` is the tag for the
-Docker image. The tag is a label for your image so that it can be referenced.
-This tag is used in subsequent commands (like `docker run`). By using this tag,
-you don't need to change any of the other commands in this README.
+In this command, `ghcr.io/aidancrowther/milk-v-duo-docker-compile` is the tag
+for the Docker image. The tag is a label for your image so that it can be
+referenced. This tag is used in subsequent commands (like `docker run`). By
+using this tag, you don't need to change any of the other commands in this
+README.
 
 ## Using GitHub Codespaces
 
