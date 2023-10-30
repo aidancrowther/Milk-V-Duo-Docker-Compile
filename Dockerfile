@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install -y \
     g++ \
     wget \
     sudo \
-    doas \
     && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user
@@ -26,7 +25,7 @@ WORKDIR /home/milkv
 # Clone the repository and source the setup script
 RUN git clone https://github.com/milkv-duo/duo-examples.git \
     && cd duo-examples \
-    && sudo ./envsetup.sh
+    && ./envsetup.sh
 
 # Update .bashrc
 RUN echo ". ~/duo-examples/envsetup.sh" >> ~/.bashrc \
