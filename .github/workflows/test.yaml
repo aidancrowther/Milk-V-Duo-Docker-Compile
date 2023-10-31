@@ -17,18 +17,18 @@ jobs:
     - name: Build Docker image
       uses: docker/build-push-action@v5
       with:
-        tags: ghcr.io/aidancrowther/milk-v-duo-docker-compile:latest
+        tags: milk-v-duo-docker-compile:latest
         context: .
         push: false
 
     - name: Run Commands from Outside the Container example
       run: docker run -t \
         -v $(pwd):/home/milkv/buildroot \
-        ghcr.io/aidancrowther/milk-v-duo-docker-compile:latest \
+        milk-v-duo-docker-compile:latest \
         "cd examples/hello-world && make"
 
     - name: Test sudo
       run: docker run -t \
         -v $(pwd):/home/milkv/buildroot \
-        ghcr.io/aidancrowther/milk-v-duo-docker-compile:latest \
+        milk-v-duo-docker-compile:latest \
         "echo milk | sudo -S apt-get update"
