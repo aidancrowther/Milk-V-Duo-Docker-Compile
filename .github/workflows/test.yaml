@@ -22,13 +22,13 @@ jobs:
         push: false
 
     - name: Run Commands from Outside the Container example
-      run: docker run -it \
+      run: docker run -t \
         -v $(pwd):/home/milkv/buildroot \
         ghcr.io/aidancrowther/milk-v-duo-docker-compile:latest \
         "cd examples/hello-world && make"
 
     - name: Test sudo
-      run: docker run -it \
+      run: docker run -t \
         -v $(pwd):/home/milkv/buildroot \
         ghcr.io/aidancrowther/milk-v-duo-docker-compile:latest \
         "echo milk | sudo -S apt-get update"
