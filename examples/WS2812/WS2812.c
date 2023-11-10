@@ -6,7 +6,7 @@
 
 #include <wiringx.h>
 
-// Use 12.8MHz to allow for bit banging of the WS2812 signal to be "close enough"
+// Use 6.4MHz to allow for bit banging of the WS2812 signal to be "close enough"
 #define SPISPEED 6400000
 // We use SPI bus 0 on the Milk V Duo
 #define SPIBUS 0
