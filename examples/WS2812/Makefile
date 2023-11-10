@@ -1,4 +1,4 @@
-TARGET=blink
+TARGET=WS2812_Test
 
 ifeq (,$(TOOLCHAIN_PREFIX))
 $(error TOOLCHAIN_PREFIX is not set)
