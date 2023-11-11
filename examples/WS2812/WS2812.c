@@ -3,19 +3,27 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
-
 #include <wiringx.h>
 
 // Use 6.4MHz to allow for bit banging of the WS2812 signal to be "close enough"
 #define SPISPEED 6400000
+
 // We use SPI bus 0 on the Milk V Duo
 #define SPIBUS 0
+
+// Number of LEDs in our length
 #define NUMLEDS 5
+
+// Future upgrade, support different WS2812 types
 #define GRB 3
 #define GRBW 4
+
+// Define the equivalent 0 and 1 values for the WS2812 protocol
 #define ONE 0xFC
 #define ZERO 0x80
-#define RESETLENGTH 25
+
+// Append 40 zero values to the end of the message. WS2812 requires a 50us reset pulse, at the frequency of 6.4MHz this will work out to roughly that value.
+#define RESETLENGTH 40
 #define RESET 0x00
 
 /*
@@ -26,7 +34,7 @@
 int bufferSize = 0;
 
 int msleep(unsigned int tms) {
-  return usleep(tms * 1000);
+    return usleep(tms * 1000);
 }
 
 int8_t initSPI(){
